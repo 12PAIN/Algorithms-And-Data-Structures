@@ -107,7 +107,7 @@ line5 = plt.plot(x, y_5, color="orange", linewidth=3, label="Sorted")
 plt.grid()
 plt.legend()
 
-plt.ylabel("Time")
+plt.ylabel("Time, Number = 10")
 plt.xlabel("Elements")
 
 print(fig.axes)

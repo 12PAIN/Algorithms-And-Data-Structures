@@ -15,14 +15,14 @@ def foo(s): # s - строка
 #     return str(10**(N-1))
 
 def generateStringOfNumbers(N):
-    return "0" * N
+    return "1" * N
 
 x = []
 y = []
 
-for i in range (1, 1000):
-    x.append(i*40)
-    generatedStr = generateStringOfNumbers(i*40)
+for i in range(1000, 100000, 1000):
+    x.append(i)
+    generatedStr = generateStringOfNumbers(i)
     time = timeit.timeit('foo(generatedStr)', number=5, globals=globals())
     y.append(time)
 
@@ -32,7 +32,7 @@ print(type(fig))  # тип объекта Figure
 
 plt.plot(x, y)
 
-plt.ylabel("Time, x5")
+plt.ylabel("Time, x1")
 plt.xlabel("N, string length")
 
 print(fig.axes)

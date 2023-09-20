@@ -4,32 +4,28 @@ import numpy as np
 
 
 def testDelOperatorLists(arr):
-
-    for i in range(0, len(arr)):
-        del arr[0]
+    del arr[0]
 
 
 def testDelOperatorDicts(arr):
-
-    for i in range(1, len(arr)):
-        del arr['' + str(i)]
+    del arr['' + str(1)]
 
 
-x = list(range(1, 11))
+x = list(range(100000, 1000001, 100000))
 
 lists = []
 dicts = []
 
 for i in range(1, 11):
-    lists.append(list(range(1, 20000 * i)))
-    dicts.append( { '' + str(i): '' + str(i) for i in range(1, 20000 * i) })
+    lists.append(list(range(1, 100000 * i)))
+    dicts.append( { str(j): j for j in range(1, 100000 * i) })
 
 y_1 = []
 y_2 = []
 
 for i in range(0, 10):
-    y_1.append(timeit.timeit(f'testDelOperatorLists(lists[{i}])', number=5, globals=globals()))
-    y_2.append(timeit.timeit(f'testDelOperatorDicts(dicts[{i}])', number=5, globals=globals()))
+    y_1.append(timeit.timeit(f'testDelOperatorLists(lists[{i}])', number=1, globals=globals()))
+    y_2.append(timeit.timeit(f'testDelOperatorDicts(dicts[{i}])', number=1, globals=globals()))
 
 fig = plt.figure()  # Создание объекта Figure
 print(fig.axes)  # Список текущих областей рисования пуст
@@ -40,7 +36,7 @@ line2 = plt.plot(x, y_2, color="red", linewidth=3, label="Dicts")
 plt.legend()
 
 plt.ylabel("Time")
-plt.xlabel("Elements, x20000")
+plt.xlabel("Elements")
 
 print(fig.axes)
 
