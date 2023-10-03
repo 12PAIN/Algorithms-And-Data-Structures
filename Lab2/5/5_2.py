@@ -29,7 +29,9 @@ def tree(branchLen, t, line_width):
 
 
 def main():
+
     t = turtle.Turtle()
+    t.speed(1000)
     myWin = turtle.Screen()
     t.color('brown')
     t.width(6)

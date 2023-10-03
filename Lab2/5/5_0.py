@@ -14,6 +14,7 @@ def tree(branchLen, t):
 
 def main():
     t = turtle.Turtle()
+    t.speed(1000)
     myWin = turtle.Screen()
     t.left(90)
     t.up()

@@ -53,8 +53,6 @@ for i in x:
     select_reversed.append(timeit.timeit("mySelectSort(arr_1)", number=1, globals=globals()))
 
 fig = plt.figure()
-print(fig.axes)
-print(type(fig))
 
 plt.plot(x, fast_random, color="red", label='Fast, Random')
 plt.plot(x, select_random, color="orange", label='Select, Random')
@@ -68,7 +66,5 @@ plt.plot(x, select_reversed, color="violet", label='Select, Reversed')
 plt.ylabel("Time")
 plt.xlabel("Elements")
 plt.legend()
-
-print(fig.axes)
 
 plt.show()

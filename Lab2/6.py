@@ -26,12 +26,13 @@ def curve_minkowski(length: float, iterations: int):
 
 def start(x: float):
     t.clear()
+    t.speed(1000)
     t.penup()
     x = x if x < 0 else -x
     t.goto(x, 0)
     t.pendown()
 
-    ITERATION = 2  # номер итерации
+    ITERATION = 3  # номер итерации
 
     curve_minkowski(LENGTH, ITERATION)
 
