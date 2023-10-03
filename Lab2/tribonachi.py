@@ -7,4 +7,4 @@ def tribonachi(n):
         return 1
     return tribonachi(n-1) + tribonachi(n-2) + tribonachi(n-3)
 
-print(tribonachi(2))
+print(tribonachi(4))
