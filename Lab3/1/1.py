@@ -38,4 +38,4 @@ print(mylist)
 print()
 
 print(mylist)
-print(mylist[::-1])
+print(mylist[1::2])

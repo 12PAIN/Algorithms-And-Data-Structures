@@ -6,7 +6,7 @@ from lists.Stack import Stack
 from lists.Queue import Queue
 from lists.Deque import Deque
 
-x = [i for i in range(10, 1001, 10)]
+x = [i for i in range(100, 1001, 100)]
 
 dqTime = []
 quTime = []

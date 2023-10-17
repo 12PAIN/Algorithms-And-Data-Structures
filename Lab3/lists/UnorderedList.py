@@ -100,9 +100,6 @@ class UnorderedList:
 
             return current.getData()
 
-        if self.size() < pos or pos < 0:
-            raise IndexError
-
         for i in range(0, pos):
             current2 = current
             current = current.getNext()
@@ -111,7 +108,7 @@ class UnorderedList:
             tmp = current.getNext()
             current2.setNext(tmp)
         else:
-            self.head = None if self.size == 1 else current.getNext()
+            self.head = None if current.getNext() is None else current.getNext()
 
         return current.getData()
 
@@ -163,7 +160,7 @@ class UnorderedList:
                 for i in range(0, size):
                     newList.add(self[i])
             elif step > 0:
-                for i in range(0, size):
+                for i in range(1, size+1):
                     newList.add(self[-i])
 
             step = abs(step)
@@ -180,17 +177,15 @@ class UnorderedList:
                 if i % step != 0:
                     toPop.append(i)
 
-            print(toPop)
-
             for i in range(0, len(toPop)):
                 newList.pop(toPop[i])
-                toPop -= 1
+                toPop = [popElIdx -1 for popElIdx in toPop]
 
             return newList
 
         else:
 
-            if index >= 0 and index >= size:
+            if index >= size:
                 raise IndexError
 
             if index < 0 and abs(index) > size:
@@ -211,20 +206,18 @@ class UnorderedList:
 
             return data
 
-
     def size(self):
         current = self.head
         count = 0
-        while current != None:
+        while current is not None:
             count = count + 1
             current = current.getNext()
-
         return count
 
     def search(self, item):
         current = self.head
         found = False
-        while current != None and not found:
+        while current is not None and not found:
             if current.getData() == item:
                 found = True
             else:
@@ -243,9 +236,7 @@ class UnorderedList:
                 previous = current
                 current = current.getNext()
 
-        if previous == None:
+        if previous is None:
             self.head = current.getNext()
         else:
             previous.setNext(current.getNext())
-
-
