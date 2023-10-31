@@ -1,4 +1,4 @@
-from Struct.HashTableProbe import HashTable
+from Struct.HashTableChain import HashTable
 
 H = HashTable()
 H[54] = "cat"

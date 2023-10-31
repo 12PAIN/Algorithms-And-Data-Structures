@@ -132,6 +132,27 @@ class UnorderedList:
         resultStr += "]"
         return resultStr
 
+
+    def __repr__(self):
+
+        if self.isEmpty():
+            return "[]"
+
+        resultStr = "["
+
+        current = self.head
+        while current.getNext() is not None:
+            resultStr += "'" + current.getData() + "'" if isinstance(current.getData(), str) \
+                else current.getData().__str__()
+
+            current = current.getNext()
+            resultStr += ", "
+
+        resultStr += "'" + current.getData() + "'" if isinstance(current.getData(),
+                                                                 str) else current.getData().__str__()
+        resultStr += "]"
+        return resultStr
+
     def __getitem__(self, index):
         size = self.size()
 

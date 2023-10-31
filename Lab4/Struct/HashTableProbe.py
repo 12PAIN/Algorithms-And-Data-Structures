@@ -1,4 +1,4 @@
-from sympy import nextprime, prevprime
+from sympy import nextprime
 
 class HashTable:
     def __init__(self):
@@ -12,22 +12,10 @@ class HashTable:
     def resize(self, greater=True):
 
         def newSizeGreater(oldSize):
-            new_size = nextprime(oldSize)
-            coef = new_size / oldSize
-            while coef < 1.72:
-                new_size = nextprime(new_size)
-                coef = new_size / oldSize
-
-            return new_size
+            return nextprime(2 * oldSize)
 
         def newSizeLesser(oldSize):
-            new_size = prevprime(oldSize)
-            coef = oldSize / new_size
-            while coef < 1.72:
-                new_size = prevprime(new_size)
-                coef = oldSize / new_size
-
-            return new_size
+            return nextprime(oldSize/2.)
 
         self.size = newSizeGreater(self.size) if greater else newSizeLesser(self.size)
         oldSlots = self.slots
@@ -68,12 +56,12 @@ class HashTable:
                 else:
                     self.data[nextslot] = data  # replace
 
-    def  __delitem__(self, value):
+    def  __delitem__(self, key):
 
-        if value not in self.data:
+        if key not in self.slots:
             return
 
-        idx = self.data.index(value)
+        idx = self.slots.index(key)
         self.slots[idx] = None
         self.data[idx] = None
 
@@ -110,8 +98,8 @@ class HashTable:
 
         return data
 
-    def __contains__(self, item):
-        return item in self.data
+    def __contains__(self, key):
+        return key in self.slots
 
     def __len__(self):
         return len([item for item in self.data if item is not None])
